@@ -33,8 +33,6 @@ namespace Gisha.HillClimb
 
         private void OnScreenTouchDown(Vector2 screenPos)
         {
-            Debug.Log(screenPos);
-            
             if (screenPos.x > 0.5f)
                 _hInput = 1f;
             else
