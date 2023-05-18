@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
+using Random = System.Random;
 
 namespace Gisha.HillClimb.World
 {
@@ -20,16 +22,35 @@ namespace Gisha.HillClimb.World
 
         private void OnValidate()
         {
-            _shapeController.spline.Clear();
+            GenerateTerrain();
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
             GenerateTerrain();
         }
 
         private void GenerateTerrain()
         {
+            _shapeController.spline.Clear();
+            var seed = new Random().Next(500000);
+            
             for (int i = 0; i < levelLength; i++)
             {
+                float step = i * noiseStep + seed;
+                
                 _lastPos = transform.position +
-                           new Vector3(i * xMultiplier, Mathf.PerlinNoise(0, i * noiseStep) * yMultiplier);
+                           new Vector3(i * xMultiplier, Mathf.PerlinNoise(0, step) * yMultiplier);
                 _shapeController.spline.InsertPointAt(i, _lastPos);
 
                 if (i != 00 && Math.Abs(i - (levelLength - 1)) > 0.1f)
