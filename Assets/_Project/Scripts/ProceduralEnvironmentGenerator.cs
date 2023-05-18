@@ -21,7 +21,11 @@ namespace Gisha.HillClimb
         private void OnValidate()
         {
             _shapeController.spline.Clear();
+            GenerateTerrain();
+        }
 
+        private void GenerateTerrain()
+        {
             for (int i = 0; i < levelLength; i++)
             {
                 _lastPos = transform.position +
