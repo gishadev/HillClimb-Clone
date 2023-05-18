@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Gisha.HillClimb
@@ -14,12 +13,40 @@ namespace Gisha.HillClimb
 
         private float _hInput;
 
-        private void Update()
+
+        private void Awake()
         {
-            _hInput = Input.GetAxisRaw("Horizontal");
+            GameManager.InputController.ScreenTouchDown += OnScreenTouchDown;
+            GameManager.InputController.ScreenTouchUp += OnScreenTouchUp;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.InputController.ScreenTouchDown -= OnScreenTouchDown;
+            GameManager.InputController.ScreenTouchUp -= OnScreenTouchUp;
         }
 
         private void FixedUpdate()
+        {
+            MoveCar();
+        }
+
+        private void OnScreenTouchDown(Vector2 screenPos)
+        {
+            Debug.Log(screenPos);
+            
+            if (screenPos.x > 0.5f)
+                _hInput = 1f;
+            else
+                _hInput = -1f;
+        }
+
+        private void OnScreenTouchUp(Vector2 screenPos)
+        {
+            _hInput = 0f;
+        }
+
+        private void MoveCar()
         {
             frontWheelBody.AddTorque(-_hInput * movementSpeed * Time.fixedDeltaTime);
             backWheelBody.AddTorque(-_hInput * movementSpeed * Time.fixedDeltaTime);
