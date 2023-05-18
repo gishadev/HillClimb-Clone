@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gisha.HillClimb.World;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Gisha.HillClimb
@@ -16,11 +17,13 @@ namespace Gisha.HillClimb
         private void OnEnable()
         {
             HeadColliderHandler.HeadCollidedWithGround += ReloadGame;
+            WinBeam.PlayerEnteredWinBeam += ReloadGame;
         }
 
         private void OnDisable()
         {
             HeadColliderHandler.HeadCollidedWithGround -= ReloadGame;
+            WinBeam.PlayerEnteredWinBeam -= ReloadGame;
             InputController.Dispose();
         }
 

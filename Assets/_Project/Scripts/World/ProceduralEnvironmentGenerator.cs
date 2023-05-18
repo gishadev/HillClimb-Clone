@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.U2D;
 
-namespace Gisha.HillClimb
+namespace Gisha.HillClimb.World
 {
     [ExecuteInEditMode]
     public class ProceduralEnvironmentGenerator : MonoBehaviour
