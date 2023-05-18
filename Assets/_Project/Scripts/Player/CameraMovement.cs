@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Gisha.HillClimb
+namespace Gisha.HillClimb.Player
 {
     public class CameraMovement : MonoBehaviour
     {

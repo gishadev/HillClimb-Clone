@@ -1,8 +1,9 @@
-﻿using Gisha.HillClimb.World;
+﻿using Gisha.HillClimb.Player;
+using Gisha.HillClimb.World;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Gisha.HillClimb
+namespace Gisha.HillClimb.Core
 {
     public class GameManager : MonoBehaviour
     {

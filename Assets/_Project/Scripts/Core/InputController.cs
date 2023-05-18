@@ -2,7 +2,7 @@
 using UnityEngine;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 
-namespace Gisha.HillClimb
+namespace Gisha.HillClimb.Core
 {
     public class InputController : IInputController
     {

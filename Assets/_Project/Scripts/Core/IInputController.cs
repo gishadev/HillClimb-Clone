@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Gisha.HillClimb
+namespace Gisha.HillClimb.Core
 {
     public interface IInputController
     {

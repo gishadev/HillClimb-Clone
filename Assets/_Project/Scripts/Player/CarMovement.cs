@@ -1,6 +1,7 @@
+using Gisha.HillClimb.Core;
 using UnityEngine;
 
-namespace Gisha.HillClimb
+namespace Gisha.HillClimb.Player
 {
     public class CarMovement : MonoBehaviour
     {
